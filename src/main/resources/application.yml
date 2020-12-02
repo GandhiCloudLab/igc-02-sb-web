@@ -28,7 +28,7 @@ management:
         include: "*"
 
 server:
-  port: ${PORT:9080}
+  port: ${PORT:3000}
 
 logging:
   level:
