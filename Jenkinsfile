@@ -1,4 +1,4 @@
-def pipelineVersion='1.1.3'
+def pipelineVersion='1.1.4'
 println "Pipeline version: ${pipelineVersion}"
 /*
  * This is a vanilla Jenkins pipeline that relies on the Jenkins kubernetes plugin to dynamically provision agents for
@@ -173,6 +173,9 @@ spec:
         - name: HOME
           value: /home/devops
       envFrom:
+        - configMapRef:
+            name: gitops-cd-secret
+            optional: true
         - configMapRef:
             name: gitops-repo
             optional: true
@@ -401,9 +404,15 @@ spec:
                     echo "PORT=${PORT}" >> ./env-config
 
                     URL="${PROTOCOL}://${HOST}"
+<<<<<<< HEAD
 
                     sleep_countdown=5
 
+=======
+
+                    sleep_countdown=5
+
+>>>>>>> 688f22cb7e587d24e1fc2a7533d3faaaceb1af4d
                     # sleep for 10 seconds to allow enough time for the server to start
                     sleep 10
                     echo "Health check start"
